@@ -3,8 +3,9 @@
 <div>
     {{ index . "bottom" }}
 </div>
+
 <div class="p-5 font-bold">How is this done?</div>
-<div class="pl-5 pb-5 nice">
+<div class="pl-5 pb-5 nice text-xs">
 
 <pre>{{ index . "table_show" }}</pre>
 
@@ -32,7 +33,7 @@ and Column 2 is that header field's value. And it grows vertically this way.
 
 </div>
 
-<div class="pl-5 pb-5 pr-5 nice">
+<div class="pl-5 pb-5 pr-5 nice text-xs">
 
 So in order to render both of these, we need to first define the headers:
 <pre>
@@ -64,12 +65,12 @@ So this sample data as 2D array is:
 Each column can have any HTML it wants so that's why cells.go renders a template:
 </div>
 
-<div class="pl-5 pb-5 pr-5 nice">
+<div class="pl-5 pb-5 pr-5 nice text-xs">
 <pre>{{ index . "col_show" }}</pre>
 </div>
 
 <div class="pl-5 pb-5 pr-5 nice">
-For each column. The above 2D array example is showing just strings, but it could be
+for each column. The above 2D array example is showing just strings, but it could be
 complex HTML in each cell.
 </div>
 
@@ -78,7 +79,7 @@ Now for the last part, lets look at logic in "_table_large" first. This is
 the normal table logic. Header on top just once, like an excel file.
 </div>
 
-<div class="pl-5 pr-5 nice">
+<div class="pl-5 pr-5 nice text-xs">
 <pre>{{ index . "large_show" }}</pre>
 </div>
 
@@ -88,11 +89,11 @@ not normal table logic. The header is repeated over and over and it's forced int
 just two columns but N rows.
 </div>
 
-<div class="pl-5 pb-5 pr-5 nice">
+<div class="pl-5 pb-5 pr-5 nice text-xs">
 <pre>{{ index . "small_show" }}</pre>
 </div>
 
 <div class="pl-5 pb-5 pr-5 nice">
-This example is open source at <a href="" class="underline">a table that looks good on mobile and desktop</a>.
+This example is open source at <a href="https://github.com/andrewarrow/a-table-that-looks-good-on-mobile-and-deskto" class="underline">a table that looks good on mobile and desktop</a>.
 </div>
 
