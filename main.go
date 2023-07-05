@@ -39,7 +39,7 @@ func main() {
 	router.BuildTag = buildTag
 	router.EmbeddedTemplates = embeddedTemplates
 	router.EmbeddedAssets = embeddedAssets
-	r := router.NewRouter("DATABASE_URL", embeddedFile)
+	r := router.NewRouter("NO_DATABASE_URL_TO_TURN_OFF_PSQL", embeddedFile)
 
 	if arg == "init" {
 		//router.InitNewApp()
@@ -48,8 +48,8 @@ func main() {
 		//r.Paths["apple-app-site-association"] = app.HandleApple
 		//r.Paths["admin"] = app.HandleAdmin
 		//r.Paths["media"] = app.HandleMedia
-		//r.BearerAuthFunc = nil
-		//r.CookieAuthFunc = app.CookieAuth
+		r.BearerAuthFunc = nil
+		r.CookieAuthFunc = nil
 
 		r.ListenAndServe(":" + os.Args[2])
 	} else if arg == "t" {
