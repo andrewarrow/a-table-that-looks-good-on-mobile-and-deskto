@@ -1,0 +1,98 @@
+
+<div class="p-5 font-bold">A table that looks good on mobile and desktop.</div>
+<div>
+    {{ index . "bottom" }}
+</div>
+<div class="p-5 font-bold">How is this done?</div>
+<div class="pl-5 pb-5 nice">
+
+<pre>{{ index . "table_show" }}</pre>
+
+</div>
+<div class="pl-5 pb-5 pr-5 nice">
+
+We use <a href="https://tailwindcss.com/" class="underline">tailwindcss</a> to
+place both tables on the page but only show one at a time. The classes
+"hidden md:block large" hides the large table on small screens and "md:hidden small" does the opposite, hides the small table on large screen.
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+
+But, the small table looks very different. The large table can be N columns across
+horizontally like a normal excel table. The header at the top once, the all the rows
+under it. But the small table repeats the header over and over for each row. It's
+no longer N columns across. It's always 2 columns across. Column 1 is one header field
+and Column 2 is that header field's value. And it grows vertically this way.
+
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+
+        <img src="https://i.imgur.com/0YBSI4v.jpg" width="300"/>
+
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+
+So in order to render both of these, we need to first define the headers:
+<pre>
+
+headers := []string{"name", "age", 
+  "species", "home_planet", 
+  "language", "occupation"}
+</pre>
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+
+And we also need the data as a 2D array. I use the golang "go on rails" framework 
+<a class="underline" href="https://github.com/andrewarrow/feedback">feedback</a> for this, specifcally 
+<a class="underline" href="https://github.com/andrewarrow/feedback/blob/main/router/cells.go">cells.go</a>
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+So this sample data as 2D array is: 
+[[Zog, 150, Xenon, Zeta-7, Zorgon, Astrobiologist], 
+ [Luna, 200, Lunarian, Moon, Lunar, Quantum Physicist], 
+ [Glimmer, 75, Nebulite, Nebula-9, Stellar, Astroengineer],
+ [Xylon, 300, Celestial, Alpha Centauri, Cosmic, Interstellar Diplomat],
+ [Astra, 120, Stardust, Polaris, Celestial, Astroarchaeologist]]
+
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+Each column can have any HTML it wants so that's why cells.go renders a template:
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+<pre>{{ index . "col_show" }}</pre>
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+For each column. The above 2D array example is showing just strings, but it could be
+complex HTML in each cell.
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+Now for the last part, lets look at logic in "_table_large" first. This is
+the normal table logic. Header on top just once, like an excel file.
+</div>
+
+<div class="pl-5 pr-5 nice">
+<pre>{{ index . "large_show" }}</pre>
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+The logic in "_table_small" is the killer feature of this whole thing. This is
+not normal table logic. The header is repeated over and over and it's forced into
+just two columns but N rows.
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+<pre>{{ index . "small_show" }}</pre>
+</div>
+
+<div class="pl-5 pb-5 pr-5 nice">
+This example is open source at <a href="" class="underline">a table that looks good on mobile and desktop</a>.
+</div>
+
